@@ -20,7 +20,7 @@
                     <a href="education.html" class="nav-link">Education</a>
                 </li>
                 <li class="nav-item">
-                    <a href="projects.html" class="nav-link">Projects</a>
+                    <a href="experience.html" class="nav-link">Experience</a>
                 </li>
                 <li class="nav-item">
                     <a href="fun.html" class="nav-link">Fun Stuff</a>
@@ -40,49 +40,82 @@
     <!-- Fun Content with Alternating Pattern -->
     <section class="content-section">
         <div class="container">
-            <!-- Item 1: Left Image, Right Text -->
-            <div class="fun-item fun-item-left">
-                <div class="fun-image">
-                    <img src="https://via.placeholder.com/400x300?text=Fun+Image+1" alt="Fun activity 1">
-                </div>
-                <div class="fun-text">
-                    <h3>Fun Activity 1</h3>
-                    <p>Add a description of your fun activity, hobby, or interesting discovery here. This could be anything from your favorite books, travel experiences, hobbies, or cool physics facts!</p>
-                </div>
+            <h2>Blog</h2>
+            <div id="blog-list">
+                <!-- Blog posts will be dynamically loaded here -->
             </div>
-
-            <!-- Item 2: Right Image, Left Text -->
-            <div class="fun-item fun-item-right">
-                <div class="fun-text">
-                    <h3>Fun Activity 2</h3>
-                    <p>Another interesting story or hobby you'd like to share. Maybe a favorite quote, a fun fact about physics, or something that brings you joy outside of academics.</p>
-                </div>
-                <div class="fun-image">
-                    <img src="https://via.placeholder.com/400x300?text=Fun+Image+2" alt="Fun activity 2">
-                </div>
+            <div style="margin-top:32px;">
+                <h3>Submit a New Blog</h3>
+                <form id="blogForm">
+                    <input type="text" id="blogTitle" placeholder="Blog Title" required style="width:100%;margin-bottom:8px;">
+                    <textarea id="blogContent" placeholder="Blog Content" rows="4" required style="width:100%;margin-bottom:8px;"></textarea>
+                    <input type="url" id="blogLink" placeholder="Optional Link (e.g. YouTube, article)" style="width:100%;margin-bottom:8px;">
+                    <button type="submit" class="btn btn-primary">Post Blog</button>
+                </form>
             </div>
-
-            <!-- Item 3: Left Image, Right Text -->
-            <div class="fun-item fun-item-left">
-                <div class="fun-image">
-                    <img src="https://via.placeholder.com/400x300?text=Fun+Image+3" alt="Fun activity 3">
-                </div>
-                <div class="fun-text">
-                    <h3>Fun Activity 3</h3>
-                    <p>Share your passions and interests! Whether it's gaming, music, sports, reading, or any other hobby, this is the place to express what makes you unique beyond your academic pursuits.</p>
-                </div>
-            </div>
-
-            <!-- Item 4: Right Image, Left Text -->
-            <div class="fun-item fun-item-right">
-                <div class="fun-text">
-                    <h3>Fun Activity 4</h3>
-                    <p>Continue adding more fun facts, interests, or experiences. The alternating pattern creates a visually engaging layout that keeps readers interested and engaged.</p>
-                </div>
-                <div class="fun-image">
-                    <img src="https://via.placeholder.com/400x300?text=Fun+Image+4" alt="Fun activity 4">
-                </div>
-            </div>
+        </div>
+        <script>
+        // Blog storage (local for demo)
+        let blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
+        function renderBlogs() {
+            const blogList = document.getElementById('blog-list');
+            blogList.innerHTML = '';
+            blogs.slice().reverse().forEach(blog => {
+                let linkPreview = '';
+                if(blog.link) {
+                    // YouTube video or playlist thumbnail
+                    if(blog.link.includes('youtube.com') || blog.link.includes('youtu.be')) {
+                        let videoId = '';
+                        // Playlist
+                        if(blog.link.includes('list=')) {
+                            let listId = blog.link.split('list=')[1].split('&')[0];
+                            // Try to extract the first video ID from the URL (if present)
+                            if(blog.link.includes('v=')) {
+                                videoId = blog.link.split('v=')[1].split('&')[0];
+                                linkPreview = `<div style='margin-top:8px;'><img src='https://img.youtube.com/vi/${videoId}/0.jpg' style='width:320px;border-radius:8px;'><br><a href='${blog.link}' target='_blank'>View Playlist</a></div>`;
+                            } else {
+                                // Fallback: show playlist icon if no video ID
+                                linkPreview = `<div style='margin-top:8px;'><img src='https://www.gstatic.com/youtube/img/creator/yt_creator_32x32.png' style='width:80px;border-radius:8px;opacity:0.7;'><br><a href='${blog.link}' target='_blank'>View Playlist</a><br><span style='color:#888;font-size:0.9em;'>Playlist preview unavailable</span></div>`;
+                            }
+                        } else {
+                            // Single video
+                            videoId = blog.link.split('v=')[1] || blog.link.split('/').pop();
+                            if(videoId && videoId.length > 0) {
+                                videoId = videoId.split('&')[0];
+                                linkPreview = `<div style='margin-top:8px;'><img src='https://img.youtube.com/vi/${videoId}/0.jpg' style='width:320px;border-radius:8px;'><br><a href='${blog.link}' target='_blank'>View Video</a></div>`;
+                            }
+                        }
+                    } else {
+                        linkPreview = `<div style='margin-top:8px;'><a href='${blog.link}' target='_blank'>View Link</a></div>`;
+                    }
+                }
+                // Add date to each blog
+                let dateStr = blog.date ? new Date(blog.date).toLocaleString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
+                blogList.innerHTML += `
+                    <div class='fun-item' style='margin-bottom:24px;'>
+                        <div class='fun-text'>
+                            <h3>${blog.title}</h3>
+                            <p style='color:#888;font-size:0.95em;'>${dateStr}</p>
+                            <p>${blog.content}</p>
+                            ${linkPreview}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        renderBlogs();
+        document.getElementById('blogForm').onsubmit = function(e) {
+            e.preventDefault();
+            const title = document.getElementById('blogTitle').value;
+            const content = document.getElementById('blogContent').value;
+            const link = document.getElementById('blogLink').value;
+            const date = new Date().toISOString();
+            blogs.push({title, content, link, date});
+            localStorage.setItem('blogs', JSON.stringify(blogs));
+            renderBlogs();
+            this.reset();
+        };
+        </script>
         </div>
     </section>
 
