@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Arsh Dhawan</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Arsh Dhawan</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="education.html" class="nav-link">Education</a>
+                </li>
+                <li class="nav-item">
+                    <a href="projects.html" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="fun.html" class="nav-link">Fun Stuff</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Get in Touch</h1>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="content-section">
+        <div class="container">
+            <!-- Contact Information -->
+            <div class="contact-info-section">
+                <h2>Contact Information</h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <a href="mailto:arsh23@iiserb.ac.in">arsh23@iiserb.ac.in</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <h3>LinkedIn</h3>
+                        <a href="https://www.linkedin.com/in/arsh-dhawan/" target="_blank" rel="noopener noreferrer">
+                            linkedin.com/in/arsh-dhawan
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p>IISER Bhopal, India</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CV Section -->
+            <div class="cv-section">
+                <h2>Curriculum Vitae</h2>
+                <div class="cv-box">
+                    <p>My detailed CV is available for download. It contains my complete academic achievements, research experience, skills, and professional background.</p>
+                    <a href="https://iiser-my.sharepoint.com/personal/arsh23_iiserb_ac_in/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Farsh23%5Fiiserb%5Fac%5Fin%2FDocuments%2FPhysics%5FArsh%2Farsh%5Fcv%2Epdf&parent=%2Fpersonal%2Farsh23%5Fiiserb%5Fac%5Fin%2FDocuments%2FPhysics%5FArsh&ga=1" 
+                       class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-download"></i> Download CV (PDF)
+                    </a>
+                </div>
+            </div>
+
+            <!-- Message Section -->
+            <div class="message-section">
+                <h2>Send Me a Message</h2>
+                <p>Feel free to reach out to me for collaborations, opportunities, or just to say hello!</p>
+                <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Arsh Dhawan. All rights reserved.</p>
+        <p class="last-updated">Last updated: <span id="lastUpdated"></span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
