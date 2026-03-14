@@ -1,0 +1,34 @@
+<svg width="450" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 200">
+  <style>
+    .doodle { font-family: 'Comic Sans MS', 'Chalkboard SE', cursive; fill: rgba(255,255,255,0.35); font-size: 15px; }
+    .math { font-style: italic; }
+    .line { stroke: rgba(255,255,255,0.35); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .wave { stroke: rgba(255,255,255,0.35); stroke-width: 2; fill: none; stroke-dasharray: 4,5; }
+    .small { font-size: 12px; }
+  </style>
+  
+  <text x="10" y="30" class="doodle">Type-I Seesaw (Mass Gen):</text>
+  <text x="25" y="55" class="doodle math">m_ν ≃ -m_D M_R⁻¹ m_D^T</text>
+  
+  <text x="10" y="100" class="doodle math">H_eff = 1/2E U M² U† + V_CC</text>
+  <text x="10" y="125" class="doodle small">MSW Resonance (Mikheyev &amp; Smirnov):</text>
+  <text x="25" y="145" class="doodle math small">Δm² cos2θ = 2√2 G_F N_e E</text>
+  
+  <path class="line" d="M 10 180 Q 80 180, 150 160 T 250 120" />
+  <text x="210" y="115" class="doodle small math">ν_e → ν_μ</text>
+
+  <text x="240" y="30" class="doodle">SN ν Collective Oscillations</text>
+  <text x="250" y="50" class="doodle small">(Dighe et al.)</text>
+  <text x="250" y="70" class="doodle math small">H_νν = √2 G_F ∫ (1 - cos θ_pp') ρ(p') dp'</text>
+  
+  <circle cx="280" cy="115" r="10" class="line" /> 
+  <path class="wave" d="M 295 115 Q 310 95 330 115 T 370 115" />
+  <path class="line" d="M 295 115 Q 310 135 330 115 T 370 115" />
+  <text x="380" y="110" class="doodle small math">Spectral</text>
+  <text x="380" y="125" class="doodle small math">Split</text>
+
+  <text x="240" y="170" class="doodle small">Solar ν / Parameter Fits (Goswami)</text>
+  <ellipse cx="320" cy="185" rx="30" ry="6" class="line" />
+  <ellipse cx="320" cy="185" rx="45" ry="12" class="line" stroke-dasharray="3,3" />
+  <text x="375" y="190" class="doodle small math">θ_12</text>
+</svg>
