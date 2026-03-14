@@ -155,7 +155,8 @@ body {
 }
 
 .page-header.header-contact {
-    background: url('images/neutrino-doodle.svg'), linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* Updated to use your new.svg file instead of the old neutrino one! */
+    background: url('images/new.svg'), linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 /* =========================================
