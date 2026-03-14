@@ -3,7 +3,17 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* 1. Hide the element by default (Mobile view) */
+.desktop-only {
+    display: none !important; 
+}
 
+/* 2. Show the element when the screen width is 768 pixels or larger (PC/Tablet view) */
+@media (min-width: 768px) {
+    .desktop-only {
+        display: block !important; /* Use 'flex' instead of 'block' if it's a flex container */
+    }
+}
 :root {
     --primary-color: #1a73e8;
     --secondary-color: #34a853;
