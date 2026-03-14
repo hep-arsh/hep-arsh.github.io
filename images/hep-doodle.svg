@@ -1,0 +1,19 @@
+<svg width="450" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 200">
+  <style>
+    .doodle { font-family: 'Comic Sans MS', 'Chalkboard SE', cursive; fill: rgba(255,255,255,0.35); font-size: 16px; font-style: italic; }
+    .line { stroke: rgba(255,255,255,0.35); stroke-width: 2; fill: none; stroke-linecap: round; }
+  </style>
+  <text x="10" y="40" class="doodle">ℒ_SM = -¼ F_μν F^μν + iψ̄D/ψ + h.c. + |D_μΦ|² - V(Φ)</text>
+  
+  <path class="line" d="M 50 90 L 100 130 L 50 170" />
+  <path class="line" d="M 100 130 Q 125 110 150 130 T 200 130" stroke-dasharray="4,6"/>
+  <path class="line" d="M 250 90 L 200 130 L 250 170" />
+  
+  <text x="25" y="90" class="doodle">e⁻</text>
+  <text x="25" y="175" class="doodle">e⁺</text>
+  <text x="260" y="90" class="doodle">μ⁻</text>
+  <text x="260" y="175" class="doodle">μ⁺</text>
+  <text x="135" y="110" class="doodle">γ / Z⁰</text>
+  
+  <text x="320" y="150" class="doodle">∂_μ J^μ = 0</text>
+</svg>

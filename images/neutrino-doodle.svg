@@ -1,0 +1,16 @@
+<svg width="450" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 200">
+  <style>
+    .doodle { font-family: 'Comic Sans MS', 'Chalkboard SE', cursive; fill: rgba(255,255,255,0.35); font-size: 18px; }
+    .line { stroke: rgba(255,255,255,0.35); stroke-width: 2; fill: none; stroke-linecap: round; }
+    .wave { stroke: rgba(255,255,255,0.35); stroke-width: 2; fill: none; stroke-dasharray: 4,6; }
+  </style>
+  <text x="30" y="50" class="doodle">P(ν_α → ν_β) = sin²(2θ) sin²(Δm²L / 4E)</text>
+  
+  <path class="line" d="M 40 130 Q 70 80 120 130 T 200 130 T 280 130 T 360 130" />
+  <path class="wave" d="M 40 130 Q 90 170 160 130 T 280 130 T 400 130" />
+  
+  <text x="380" y="150" class="doodle">ν_μ</text>
+  <text x="10" y="150" class="doodle">ν_e</text>
+  
+  <text x="130" y="180" class="doodle">|ν_α⟩ = Σ U*_{αi} |ν_i⟩</text>
+</svg>

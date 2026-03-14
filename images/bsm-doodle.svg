@@ -1,0 +1,15 @@
+<svg width="450" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 200">
+  <style>
+    .doodle { font-family: 'Comic Sans MS', 'Chalkboard SE', cursive; fill: rgba(255,255,255,0.35); font-size: 18px; }
+    .line { stroke: rgba(255,255,255,0.35); stroke-width: 2; fill: none; stroke-linecap: round; }
+  </style>
+  <text x="20" y="50" class="doodle">W_MSSM = μ H_u H_d + y_u u^c Q H_u + ...</text>
+  <text x="15" y="180" class="doodle">χ̃⁰₁ (LSP / Dark Matter)</text>
+  
+  <circle cx="200" cy="120" r="30" class="line" stroke-dasharray="6,4" />
+  <path class="line" d="M 100 120 L 170 120" />
+  <path class="line" d="M 230 120 L 300 120" />
+  
+  <text x="320" y="110" class="doodle">SU(3)×SU(2)×U(1)</text>
+  <text x="350" y="140" class="doodle">→ G_SM</text>
+</svg>

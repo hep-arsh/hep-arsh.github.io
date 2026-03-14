@@ -1,0 +1,14 @@
+<svg width="450" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 200">
+  <style>
+    .doodle { font-family: 'Comic Sans MS', 'Chalkboard SE', cursive; fill: rgba(255,255,255,0.35); font-size: 18px; }
+    .line { stroke: rgba(255,255,255,0.35); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round;}
+  </style>
+  <text x="20" y="40" class="doodle">S = -T ∫ d²σ √( -det(∂_α X^μ ∂_β X_μ) )</text>
+  
+  <path class="line" d="M 150 120 C 150 70, 200 90, 225 120 C 200 150, 150 170, 150 120 Z" />
+  <path class="line" d="M 225 120 C 250 90, 300 70, 300 120 C 300 170, 250 150, 225 120 Z" />
+  <ellipse cx="150" cy="120" rx="10" ry="25" class="line" />
+  <ellipse cx="300" cy="120" rx="10" ry="25" class="line" />
+  
+  <text x="60" y="125" class="doodle">α' → 0</text>
+</svg>
