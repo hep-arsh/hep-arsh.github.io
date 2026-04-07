@@ -103,29 +103,6 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-    // Show latest blog from localStorage
-    function renderHomeBlogs() {
-        let blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
-        const latestBlogDiv = document.getElementById('latestBlog');
-        const blogListDiv = document.getElementById('blogList');
-        if (blogs.length > 0) {
-            let latest = blogs[blogs.length - 1];
-            let dateStr = latest.date ? new Date(latest.date).toLocaleString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
-            latestBlogDiv.innerHTML = `<a href='fun.html' style='text-decoration:none;color:inherit;'><div class='fun-item' style='margin-bottom:24px;'><div class='fun-text'><h3>${latest.title}</h3><p style='color:#888;font-size:0.95em;'>${dateStr}</p><p>${latest.content}</p></div></div></a>`;
-            let blogListHtml = '';
-            blogs.slice(0, blogs.length - 1).reverse().forEach(blog => {
-                let dateStr = blog.date ? new Date(blog.date).toLocaleString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
-                blogListHtml += `<div style='margin-bottom:24px;border-bottom:1px solid #dadce0;padding-bottom:16px;'><a href='fun.html' style='text-decoration:none;color:inherit;'><h3>${blog.title}</h3></a><p style='color:#888;font-size:0.95em;'>${dateStr}</p><p>${blog.content}</p></div>`;
-            });
-            blogListDiv.innerHTML = blogListHtml;
-        } else {
-            latestBlogDiv.innerHTML = '<p>No blog found.';
-            blogListDiv.innerHTML = '';
-        }
-    }
-    document.addEventListener('DOMContentLoaded', renderHomeBlogs);
-    </script>
 </body>
 </html>
 
