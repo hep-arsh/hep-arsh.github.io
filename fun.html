@@ -99,17 +99,6 @@
                 `;
             });
         }
-        renderBlogs();
-        document.getElementById('blogForm').onsubmit = function(e) {
-            e.preventDefault();
-            const title = document.getElementById('blogTitle').value;
-            const content = document.getElementById('blogContent').value;
-            const link = document.getElementById('blogLink').value;
-            const date = new Date().toISOString();
-            blogs.push({title, content, link, date});
-            localStorage.setItem('blogs', JSON.stringify(blogs));
-            renderBlogs();
-            this.reset();
         };
         </script>
     </section>
