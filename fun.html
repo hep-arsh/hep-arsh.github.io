@@ -4,8 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fun Stuff - Arsh Dhawan</title>
+    <!-- Keeping your existing stylesheet links -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom styles for the criss-cross layout -->
+    <style>
+        /* Base styles for the section */
+        .fun-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            padding: 2rem 0;
+        }
+
+        /* Individual criss-cross card */
+        .criss-cross-item {
+            display: flex;
+            flex-direction: column; /* Stack vertically on mobile */
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none; /* Remove underline from hyperlink */
+            color: inherit;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eaeaea;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth dynamic pop */
+            cursor: pointer;
+        }
+
+        /* Desktop Layout (768px and up) */
+        @media (min-width: 768px) {
+            .criss-cross-item {
+                flex-direction: row; /* Side by side on desktop */
+                height: 350px;
+            }
+            
+            /* Alternating reverse layout for even items */
+            .criss-cross-item:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+        }
+
+        /* Hover Emphasis Effects */
+        .criss-cross-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: #007BFF;
+        }
+
+        .criss-cross-item:hover .criss-cross-text h3 {
+            color: #007BFF; /* Highlight title on hover */
+        }
+
+        .criss-cross-item:hover .criss-cross-image img {
+            transform: scale(1.05); /* Slight zoom on image */
+        }
+
+        /* Image Container */
+        .criss-cross-image {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .criss-cross-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 250px;
+            transition: transform 0.5s ease;
+        }
+
+        /* Text Container */
+        .criss-cross-text {
+            flex: 1;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .criss-cross-text h3 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: #222;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .criss-cross-text p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            font-weight: 600;
+            color: #007BFF;
+            margin-top: auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .criss-cross-item:hover .read-more {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -37,70 +145,54 @@
 
     <section class="content-section">
         <div class="container">
-            <h2>Blog</h2>
-            <div id="blog-list">
-                </div>
-            <div style="margin-top:32px;">
-                <h3>Submit a New Blog</h3>
-                <form id="blogForm">
-                    <input type="text" id="blogTitle" placeholder="Blog Title" required style="width:100%;margin-bottom:8px;">
-                    <textarea id="blogContent" placeholder="Blog Content" rows="4" required style="width:100%;margin-bottom:8px;"></textarea>
-                    <input type="url" id="blogLink" placeholder="Optional Link (e.g. YouTube, article)" style="width:100%;margin-bottom:8px;">
-                    <button type="submit" class="btn btn-primary">Post Blog</button>
-                </form>
-            </div>
-        </div>
-        <script>
-        // Blog storage (local for demo)
-        let blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
-        function renderBlogs() {
-            const blogList = document.getElementById('blog-list');
-            blogList.innerHTML = '';
-            blogs.slice().reverse().forEach(blog => {
-                let linkPreview = '';
-                if(blog.link) {
-                    // YouTube video or playlist thumbnail
-                    if(blog.link.includes('youtube.com') || blog.link.includes('youtu.be')) {
-                        let videoId = '';
-                        // Playlist
-                        if(blog.link.includes('list=')) {
-                            let listId = blog.link.split('list=')[1].split('&')[0];
-                            // Try to extract the first video ID from the URL (if present)
-                            if(blog.link.includes('v=')) {
-                                videoId = blog.link.split('v=')[1].split('&')[0];
-                                linkPreview = `<div style='margin-top:8px;'><img src='https://img.youtube.com/vi/${videoId}/0.jpg' style='width:320px;border-radius:8px;'><br><a href='${blog.link}' target='_blank'>View Playlist</a></div>`;
-                            } else {
-                                // Fallback: show playlist icon if no video ID
-                                linkPreview = `<div style='margin-top:8px;'><img src='https://www.gstatic.com/youtube/img/creator/yt_creator_32x32.png' style='width:80px;border-radius:8px;opacity:0.7;'><br><a href='${blog.link}' target='_blank'>View Playlist</a><br><span style='color:#888;font-size:0.9em;'>Playlist preview unavailable</span></div>`;
-                            }
-                        } else {
-                            // Single video
-                            videoId = blog.link.split('v=')[1] || blog.link.split('/').pop();
-                            if(videoId && videoId.length > 0) {
-                                videoId = videoId.split('&')[0];
-                                linkPreview = `<div style='margin-top:8px;'><img src='https://img.youtube.com/vi/${videoId}/0.jpg' style='width:320px;border-radius:8px;'><br><a href='${blog.link}' target='_blank'>View Video</a></div>`;
-                            }
-                        }
-                    } else {
-                        linkPreview = `<div style='margin-top:8px;'><a href='${blog.link}' target='_blank'>View Link</a></div>`;
-                    }
-                }
-                // Add date to each blog
-                let dateStr = blog.date ? new Date(blog.date).toLocaleString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
-                blogList.innerHTML += `
-                    <div class='fun-item' style='margin-bottom:24px;'>
-                        <div class='fun-text'>
-                            <h3>${blog.title}</h3>
-                            <p style='color:#888;font-size:0.95em;'>${dateStr}</p>
-                            <p>${blog.content}</p>
-                            ${linkPreview}
-                        </div>
+            <h2>Things I Enjoy</h2>
+            
+            <!-- Criss-Cross Layout Container -->
+            <div class="fun-showcase">
+                
+                <!-- Item 1: Left Photo, Right Text (Defaults to normal row) -->
+                <a href="https://example.com/interesting-link-1" target="_blank" class="criss-cross-item">
+                    <div class="criss-cross-image">
+                        <!-- Replace src with your actual image URL -->
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800" alt="Writing and Blogging" onerror="this.src='https://via.placeholder.com/800x600?text=Interesting+Photo+1'">
                     </div>
-                `;
-            });
-        }
-        };
-        </script>
+                    <div class="criss-cross-text">
+                        <h3>My Tech Blog</h3>
+                        <p>I occasionally write about software engineering, new frameworks, and my journey as a developer. Click here to read some of my favorite deep dives and tutorials where I break down complex topics into bite-sized pieces.</p>
+                        <span class="read-more">Read Article <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Item 2: Left Text, Right Photo (Automatically reversed by CSS nth-child) -->
+                <a href="https://youtube.com" target="_blank" class="criss-cross-item">
+                    <div class="criss-cross-image">
+                        <!-- Replace src with your actual image URL -->
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=800" alt="Gaming Setup" onerror="this.src='https://via.placeholder.com/800x600?text=Interesting+Photo+2'">
+                    </div>
+                    <div class="criss-cross-text">
+                        <h3>Gaming & eSports</h3>
+                        <p>When I'm not coding, I'm usually immersed in competitive gaming. I've compiled a playlist of my best plays, strategies, and reviews of the latest indie games. Check out my channel to see what I'm playing right now.</p>
+                        <span class="read-more">Watch Video <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Item 3: Left Photo, Right Text (Defaults back to normal row) -->
+                <a href="https://example.com/photography" target="_blank" class="criss-cross-item">
+                    <div class="criss-cross-image">
+                        <!-- Replace src with your actual image URL -->
+                        <img src="https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?auto=format&fit=crop&q=80&w=800" alt="Photography" onerror="this.src='https://via.placeholder.com/800x600?text=Interesting+Photo+3'">
+                    </div>
+                    <div class="criss-cross-text">
+                        <h3>Street Photography</h3>
+                        <p>Capturing the vibrant energy of the city is a weekend hobby of mine. This gallery showcases some of my favorite shots from my travels, focusing on architecture, candid moments, and urban landscapes.</p>
+                        <span class="read-more">View Gallery <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+            </div>
+            <!-- End of Criss-Cross Layout -->
+            
+        </div>
     </section>
 
     <footer class="footer">
