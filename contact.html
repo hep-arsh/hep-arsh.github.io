@@ -1,23 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom configuration for Tailwind colors and fonts -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#1e3a8a', // Deep Blue
-                        secondary: '#3b82f6', // Light Blue
-                    }
-                }
-            }
-        }
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Arsh Dhawan</title>
@@ -25,32 +8,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="index.html" class="text-2xl font-bold text-secondary tracking-tight">Arsh Dhawan</a>
-                </div>
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-gray-500 hover:text-secondary border-b-2 border-transparent px-3 py-2 text-sm font-medium transition-colors">Home</a>
-                    <a href="education.html" class="text-gray-500 hover:text-secondary border-b-2 border-transparent px-3 py-2 text-sm font-medium transition-colors">Education</a>
-                    <a href="experience.html" class="text-gray-500 hover:text-secondary border-b-2 border-transparent px-3 py-2 text-sm font-medium transition-colors">Experience</a>
-                    <a href="Interesting things.html" class="text-gray-500 hover:text-secondary border-b-2 border-transparent px-3 py-2 text-sm font-medium transition-colors">Interesting Things</a>
-                    <a href="contact.html" class="text-secondary border-b-2 border-primary px-3 py-2 text-sm font-medium">Contact</a>
-                </div>
-                <!-- Mobile Menu Button (Visual Only for this demo) -->
-                <div class="md:hidden flex items-center">
-                    <button class="text-gray-500 hover:text-primary focus:outline-none">
-                        <i class="fa-solid fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Arsh Dhawan</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="education.html" class="nav-link">Education</a>
+                </li>
+                <li class="nav-item">
+                    <a href="experience.html" class="nav-link">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a href="fun.html" class="nav-link">Fun Stuff</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
         </div>
     </nav>
-
 
     <section class="page-header header-contact">
         <h1>Get in Touch</h1>
