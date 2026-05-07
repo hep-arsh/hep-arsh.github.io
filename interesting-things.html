@@ -1,28 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interesting Things - Arsh Dhawan</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom configuration for Tailwind colors and fonts -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#1e3a8a', // Deep Blue
-                        secondary: '#3b82f6', // Light Blue
-                    }
-                }
-            }
-        }
-    </script>
+ <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interesting Things - Arsh Dhawan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    * { box-sizing: border-box; }
     
     <!-- Custom styles for the criss-cross layout and pagination -->
     <style>
@@ -178,21 +163,18 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="index.html" class="text-2xl font-bold text-secondary tracking-tight">Arsh Dhawan</a>
-                </div>
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-gray-500 hover:text-secondary border-b-2 border-transparent px-3 py-2 text-sm font-medium transition-colors">Home</a>
-                    <a href="education.html" class="text-gray-500 hover:text-secondary border-b-2 border-transparent px-3 py-2 text-sm font-medium transition-colors">Education</a>
-                    <a href="experience.html" class="text-gray-500 hover:text-secondary border-b-2 border-transparent px-3 py-2 text-sm font-medium transition-colors">Experience</a>
-                    <a href="Interesting things.html" class="text-secondary border-b-2 border-primary px-3 py-2 text-sm font-medium">Interesting Things</a>
-                    <a href="contact.html" class="text-gray-500 hover:text-secondary border-b-2 border-transparent px-3 py-2 text-sm font-medium transition-colors">Contact</a>
-                </div>
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo">Arsh Dhawan</a>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="education.html">Education</a>
+        <a href="experience.html">Experience</a>
+        <a href="interesting-things.html" class="active">Interesting Things</a>
+        <a href="contact.html">Contact</a>
+      </div>
                 <!-- Mobile Menu Button (Visual Only for this demo) -->
                 <div class="md:hidden flex items-center">
                     <button class="text-gray-500 hover:text-primary focus:outline-none">
