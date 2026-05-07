@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Stuff - Arsh Dhawan</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom styles for the criss-cross layout and pagination -->
+    <style>
+        /* Base styles for the section */
+        .fun-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            padding: 2rem 0;
+        }
+
+        /* Individual criss-cross card */
+        .criss-cross-item {
+            display: flex;
+            flex-direction: column; /* Stack vertically on mobile */
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none; 
+            color: inherit;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eaeaea;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Desktop Layout (768px and up) */
+        @media (min-width: 768px) {
+            .criss-cross-item {
+                flex-direction: row; /* Side by side on desktop */
+                height: 350px;
+            }
+            
+            /* Alternating reverse layout for even items */
+            .criss-cross-item:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+        }
+
+        /* Hover Emphasis Effects */
+        .criss-cross-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: #007BFF;
+        }
+
+        .criss-cross-item:hover .criss-cross-text h3 {
+            color: #007BFF; 
+        }
+
+        .criss-cross-item:hover .criss-cross-image img {
+            transform: scale(1.05); 
+        }
+
+        /* Image Container */
+        .criss-cross-image {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            background: #f4f4f4; /* placeholder color while loading */
+        }
+
+        .criss-cross-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 250px;
+            transition: transform 0.5s ease;
+        }
+
+        /* Text Container */
+        .criss-cross-text {
+            flex: 1;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .criss-cross-text h3 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: #222;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .criss-cross-text p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            font-weight: 600;
+            color: #007BFF;
+            margin-top: auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .criss-cross-item:hover .read-more {
+            text-decoration: underline;
+        }
+
+        /* Pagination Controls CSS */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            padding: 8px 16px;
+            border: 2px solid #007BFF;
+            background-color: transparent;
+            color: #007BFF;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        .page-btn.active {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        .page-btn:disabled {
+            border-color: #ccc;
+            color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Arsh Dhawan</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="education.html" class="nav-link">Education</a></li>
+                <li class="nav-item"><a href="experience.html" class="nav-link">Experience</a></li>
+                <li class="nav-item"><a href="fun.html" class="nav-link">Fun Stuff</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header header-fun">
+        <h1>Fun Stuff</h1>
+    </section>
+
+    <section class="content-section" id="fun-section">
+        <div class="container">
+            <h2>Some interesting things I found</h2>
+            
+            <!-- JavaScript will inject the items per page here -->
+            <div class="fun-showcase" id="fun-showcase">
+                <!-- Content loaded dynamically -->
+            </div>
+            
+            <!-- JavaScript will inject the 1, 2, 3... buttons here -->
+            <div class="pagination-container" id="pagination">
+                <!-- Pagination loaded dynamically -->
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Arsh Dhawan. All rights reserved.</p>
+        <p class="last-updated">Last updated: <span id="lastUpdated"></span></p>
+    </footer>
+
+    <!-- DYNAMIC PAGINATION SCRIPT -->
+    <script>
+        // ==========================================
+        // ADD YOUR NEW STUFF HERE
+        // ==========================================
+        // Add new items to the TOP of this array to make them show up first.
+        const funData = [
+            {
+                link: "https://www.math.utah.edu/~beebe/talks/2015/qtm/pdf/pauli-1930-ltc.pdf",
+                image: "images/wolfgang-pauli-633738ab-bd1a-4fa2-8f45-e4bf9dac400-resize-750.jpeg",
+                title: "", // Leave empty if no title is needed
+                content: "<p>Dr. Pauli was never known for humility. It is said that when Einstien visited his college, he remarked at the end of his lecture, 'You know, what Mr. Einstein said is not so stupid!'. Still this genius of a man was humble in atleast the moment of his life when he proposed 'neutron'(neutrino) as a yet undiscovered particle. Pauli believed that discovering and proposing new particles was a work of experimentalists not theoretical physicists, the viewpoint which has been turned completely around recently. However, still humble and afraid of his daring, he wrote the letter to Gauverein meeting in Tübingen with a restraint.</p>",
+                linkText: "<i>Dear Radioactive Gentleman and Ladies...</i>"
+            },
+            {
+                link: "https://www.youtube.com/playlist?list=PLVV0r6CmEsFxKFx-0lsQDs6oLP3SZ9BlA",
+                image: "images/d41586-019-01907-y_16803906.jpg",
+                title: "Web of Stories-Murray Gellmann",
+                content: "<p>Dr. Murray Gell-Mann is one of the giants of particle physics. Being among the 4 scientists(Feynman-Gellmann and Sudarshan-Marshall) to propose <b>V-A theory</b> describing the structure of the charged-current weak interaction, and later doing phenomenal work in QCD.</p><p>He is an interesting man to listen to and his perspective is immense. Other than that, I also recommend Freeman Dyson videos by the same channel.</p>",
+                linkText: "Watch Video"
+            },
+            {
+                link: "https://www.worldscientific.com/worldscibooks/10.1142/5088#t=aboutBook",
+                image: "images/5088.cover.jpg",
+                title: "Book Recommendation #1",
+                content: "<p>During my 6th semester, esteemed Professor Amol Dighe visited us at IISER Bhopal where in a few, he recommended this book to students, prompting me to pick it up. Written by Nobel Prize winner particle physicist, Martinus Veltman who won his nobel alongside his Ph.D student, Dr. 't Hooft, it is an interesting book for getting introduced to particle physics, its formation and most of the theory explained intitutively without any mathematics, making it a must read for any aspiring particle physicist.</p>",
+                linkText: "Buy Book"
+            },
+            {
+                link: "https://www.youtube.com/playlist?list=PLVV0r6CmEsFw1phnddYWXtVkRW8eUVlqx",
+                image: "images/kf4s9uyqn8bd1.jpg",
+                title: "Web of Stories-Edward Teller",
+                content: "<p>Surely, you have seen Oppenhiemer and angry with Dr. Teller, but Dr. Teller wasn't just the father of Hydrogen bomb. Surely, H-Bomb was a major accomplishment in his life but his impact in Physics is immeasurable be it Gamow-Teller transitions or writing one of the first papers on Monte-Carlo method. Dr. Teller and Dr. Gamow both are brilliant minds in the field of physics, with understanding as clear as a crystal. I have often listened to them/read their books to find a perspective encompassing a depth far beyond any master could possess.</p>",
+                linkText: "Watch Video"
+            },
+            {
+                link: "https://youtu.be/1HYa4wxqe8Y?si=Gd4DMsU46_4iXU_h",
+                image: "images/images (2).jpg",
+                title: "M-theory",
+                content: "<p>Dr. Edward Witten is one of the most brilliant Mathematical Physicist of our era. Making String theory as his homeground, he has won countless awards including Breakthrough, Dirac medal as well as Fields Medal(the only physicist to do so). However, one may recognize his biggest gift to his field was the second string-revolution, which started as a simple attempt to get rid of a few of string theories and ended up unifying them all as M-theory. His first talk where he talked about it is actually available publicly and is linked below.</p>",
+                linkText: "Watch Video"
+            },
+            {
+                link: "https://youtu.be/GVL4lZldEb8?si=1i1iyffnudDxjKvd",
+                image: "images/images (3).jpg",
+                title: "Victor Weisskopf",
+                content: "<p>Victor Weisskopf or 'Viki' as called by his friends, espescially Dr. Gell-Mann who admired him a lot, was a scientist who collected advisors like Heisenberg, Schrödinger, Pauli as well as Niels Bohr before finally landing professorship. He was a clever less rigourous man who gave many a contributions to the field of QED. Always insecure about his mathematical abilities, he did not publish results (which turned out to be correct) costing him a Nobel. His thought process, explanations and devised problems are always witty, making his life a must think to read about. </p>",
+                linkText: "Watch Video"
+            },
+            {
+                link: "https://www.goodreads.com/book/show/28269823-thirty-years-that-shook-physics",
+                image: "images/17265._SX300_.jpg",
+                title: "Book Recommendation #2",
+                content: "<p>Dr. Gamow, already one of the most witty physicist chose to boon us with a book about the formative years of Quantum Theory.. Having worked with the people who led to these development, he chose to title the chapters after them and their contributions, explaining stuff as well as telling interesting personal stories along the way, alongside photographs from his personal collection. This book is an interesting read for all physics students despite the stage, plus there is a play on neutrino discovery at its very end which was performed by some of the original scientists, making it a must read.</p>",
+                linkText: "Buy Book"
+            }
+        ];
+
+        // ==========================================
+        const ITEMS_PER_PAGE = 8;
+        
+        // Retrieve the current page from the URL parameter (e.g., ?page=2), default to 1
+        const urlParams = new URLSearchParams(window.location.search);
+        let currentPage = parseInt(urlParams.get('page')) || 1;
+
+        function renderPage(page) {
+            const showcase = document.getElementById('fun-showcase');
+            showcase.innerHTML = ''; // Clear current items
+
+            const startIndex = (page - 1) * ITEMS_PER_PAGE;
+            const endIndex = startIndex + ITEMS_PER_PAGE;
+            const itemsToShow = funData.slice(startIndex, endIndex);
+
+            itemsToShow.forEach((item, index) => {
+                // Determine if title exists
+                const titleHTML = item.title ? `<h3>${item.title}</h3>` : '';
+                
+                // Add staggered animation delay
+                const animDelay = `animation-delay: ${index * 0.1}s;`;
+
+                const html = `
+                    <a href="${item.link}" target="_blank" class="criss-cross-item" style="${animDelay}">
+                        <div class="criss-cross-image">
+                            <img src="${item.image}" alt="${item.title || 'Image'}" onerror="this.src='https://via.placeholder.com/800x600?text=Image+Unavailable'">
+                        </div>
+                        <div class="criss-cross-text">
+                            ${titleHTML}
+                            ${item.content}
+                            <span class="read-more">${item.linkText} <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                `;
+                showcase.innerHTML += html;
+            });
+
+            renderPaginationControls();
+        }
+
+        function renderPaginationControls() {
+            const paginationContainer = document.getElementById('pagination');
+            paginationContainer.innerHTML = ''; // Clear controls
+
+            const totalPages = Math.ceil(funData.length / ITEMS_PER_PAGE);
+
+            // Don't show pagination if there's only 1 page
+            if (totalPages <= 1) return;
+
+            // Prev Button
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'page-btn';
+            prevBtn.innerHTML = '&laquo; Prev';
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.onclick = () => changePage(currentPage - 1);
+            paginationContainer.appendChild(prevBtn);
+
+            // Numbered Buttons
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+                btn.innerText = i;
+                btn.onclick = () => changePage(i);
+                paginationContainer.appendChild(btn);
+            }
+
+            // Next Button
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'page-btn';
+            nextBtn.innerHTML = 'Next &raquo;';
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.onclick = () => changePage(currentPage + 1);
+            paginationContainer.appendChild(nextBtn);
+        }
+
+        function changePage(newPage) {
+            currentPage = newPage;
+            
+            // Update the URL without reloading the page
+            const url = new URL(window.location);
+            url.searchParams.set('page', currentPage);
+            window.history.pushState({ page: currentPage }, '', url);
+
+            renderPage(currentPage);
+            // Smoothly scroll back to the top of the section when a page is changed
+            document.getElementById('fun-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', (event) => {
+            const params = new URLSearchParams(window.location.search);
+            currentPage = parseInt(params.get('page')) || 1;
+            renderPage(currentPage);
+        });
+
+        // Initialize the first page on load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPage(currentPage);
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
