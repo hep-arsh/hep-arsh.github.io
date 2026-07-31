@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsh Dhawan - Portfolio</title>
+    
     <!-- Favicon Links -->
     <link rel="icon" href="images/cherenkov-nu.png" type="image/png">
     <!-- If you also want to use the .ico as a fallback, you can uncomment the line below and ensure you have a favicon.ico file -->
     <!-- <link rel="icon" href="favicon.ico" sizes="48x48"> -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Arsh Dhawan</title>
+
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -26,7 +28,7 @@
                     <a href="experience.html" class="nav-link">Experience</a>
                 </li>
                 <li class="nav-item">
-                    <a href="fun.html" class="nav-link">Fun Stuff</a>
+                <li class="nav-item"><a href="fun.html" class="nav-link">Fun Stuff</a></li>
                 </li>
                 <li class="nav-item">
                     <a href="contact.html" class="nav-link">Contact</a>
@@ -35,97 +37,68 @@
         </div>
     </nav>
 
-    <section class="page-header header-contact">
-        <h1>Get in Touch</h1>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Arsh Dhawan</h1>
+            <p class="subtitle">Physics | Mathematics | HEP | Neutrino Physics</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/arsh-dhawan/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arsh23@iiserb.ac.in">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+            </div>
+        </div>
     </section>
 
-    <section class="content-section">
+    <section class="welcome">
         <div class="container">
-            <div class="contact-info-section">
-                <h2>Contact Information</h2>
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email</h3>
-                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arsh23@iiserb.ac.in">arsh23@iiserb.ac.in</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <h3>LinkedIn</h3>
-                        <a href="https://www.linkedin.com/in/arsh-dhawan/" target="_blank" rel="noopener noreferrer">
-                            linkedin.com/in/arsh-dhawan
-                        </a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>Location</h3>
-                        <p>IISER Bhopal, India</p>
-                    </div>
-                </div>
+            <img src="images/physics-banner.png" alt="Physics Banner" style="width:100%;max-height:220px;object-fit:cover;border-radius:16px;margin-bottom:24px;">
+            <h2>Welcome to My Website</h2>
+            <p>
+                Welcome to my student website. If you are looking for a short bio, I am Arsh Dhawan a student from the Scientific institute of IISER Bhopal majoring in the old science of Physics in not so old field of High Energy Physics. My previous projects were most associated with BSM Physics which you can read more about in other sections.
+            </p>
+            <div class="quick-links">
+                <a href="education.html" class="btn btn-primary">Education</a>
+                <a href="experience.html" class="btn btn-secondary">Experience</a>
+                <a href="contact.html" class="btn btn-primary">Get in Touch</a>
             </div>
+        </div>
+    </section>
+<section class="random-content">
+        <div class="container" style="display: flex; align-items: center; gap: 32px; flex-wrap: wrap;">
             
-            <!-- Removed the redundant opening <section> and <div class="container"> tags here -->
-
-            <div class="contact-info-section" style="margin-top: 3rem;">
-                <h2>Socials</h2>
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <i class="fab fa-instagram" style="color: #E1306C;"></i>
-                        <h3>Instagram</h3>
-                        <a href="https://www.instagram.com/arsh007feynman/" target="_blank" rel="noopener noreferrer">
-                            @arsh007feynman
-                        </a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-goodreads" style="color: #553B08;"></i>
-                        <h3>Goodreads</h3>
-                        <a href="https://www.goodreads.com/arsh_dhawan" target="_blank" rel="noopener noreferrer">
-                            arsh_dhawan
-                        </a>
-                    </div>
-                    <div class="contact-item">
-                        <!-- Wrapping SVG in an i tag so your styles.css targets it perfectly like a FontAwesome icon -->
-                        <i style="color: #00E054;">
-                            <svg viewBox="0 0 24 24" style="width: 1em; height: 1em; fill: currentColor; vertical-align: -0.125em;" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="12" r="10" />
-                            </svg>
-                        </i>
-                        <h3>Letterboxd</h3>
-                        <a href="https://letterboxd.com/azaadArsh/" target="_blank" rel="noopener noreferrer">
-                            azaadArsh
-                        </a>
-                    </div>
-                </div>
+            <div style="flex: 1; min-width: 300px;">
+                <section style="margin-bottom: 24px;">
+                    <blockquote style="font-style: italic; font-size: 1.1rem; border-left: 4px solid #ef8354; padding-left: 20px; margin: 24px 0;">
+                        "I have done a terrible thing: I have postulated a particle that cannot be detected."
+                    </blockquote>
+                    <p style="text-align: right; font-style: italic; margin-top: -8px; margin-bottom: 24px;">
+                        ~Wolfgang Pauli
+                    </p>
+                    <p style="line-height: 1.6; margin-bottom: 24px;">
+                        Wolfgang Pauli proposing the neutrino, the first particle predicted by theorists before the experimentals. It was the first step in its chain, now theorists go on making predictions and models decades into the future using experiments as only constraints in their models.
+                    </p>
+                    <p style="text-align: right; font-family: 'Courier New', monospace; font-size: 0.9rem;">
+                        <strong>See:</strong> <em><a href="https://www.math.utah.edu/~beebe/talks/2015/qtm/pdf/pauli-1930-ltc.pdf" style="text-decoration: none; color: inherit;">Radioactive Gentlemen and Ladies... Pauli's letter which introduced neutrino</a></em>
+                    </p>
+                </section>
             </div>
 
-            <div class="cv-section" style="margin-top: 3rem;">
-                <h2>Curriculum Vitae</h2>
-                <div class="cv-box">
-                    <p>My detailed CV is available for download. It contains my complete academic achievements, research experience, skills, and professional background.</p>
-                    <a href="pdfs/arsh_cv_wp.pdf" class="btn btn-primary" target="_blank">
-                        <i class="fas fa-download"></i> Download CV (PDF)
-                    </a>
-                </div>
+            <div style="flex: 0 0 180px; text-align: center;">
+                <img src="images/linkedin-profile.jpg" alt="Profile Picture" style="width:140px;height:140px;object-fit:cover;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.12);border:3px solid #ef8354;display:block;margin:0 auto;">
             </div>
 
-            <div class="message-section" style="margin-top: 3rem;">
-                <h2>Send Me a Message</h2>
-                <p>Feel free to reach out to me for collaborations, opportunities, or just to say hello!</p>
-                <form class="contact-form" action="https://formspree.io/f/mpqylqwe" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
+        </div>
+
+        <div class="container" style="margin-top: 48px;">
+            <div id="latestBlog">
+                <p>Loading latest thought...</p>
+            </div>
+            <div id="allBlogs" style="margin-top:32px;">
+                <h3 style="font-family:'Fira Mono','Roboto Mono','Consolas',monospace;font-size:1.2rem;"><a href ="fun.html"> All Blog Posts</a></h3>
+                <div id="blogList"></div>
             </div>
         </div>
     </section>
