@@ -4,55 +4,251 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Arsh Dhawan</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1a73e8; /* Matches the blue in the image */
+            --bg-light: #f8f9fa;     /* Matches the subtle background in the image */
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: #333;
+        }
+        
+        /* Navbar styling mimicking the provided HTML structure's expected look */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 1.5rem;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Header styling */
+        .page-header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        /* Main content container */
+        .container {
+            max-width: 900px; /* Constraining width to match image proportions better */
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Section headings matching the image */
+        h2 {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            margin-top: 2.5rem; /* Space between sections */
+        }
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        /* Grid for cards (Contact & Socials) */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Card styling exactly matching the image */
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); /* Subtle shadow from image */
+            border: 1px solid #eaeaea; /* Very subtle border */
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Icon styling inside cards */
+        .card i, .card svg {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Specific styling for social icons to make them distinct but unified */
+        .social-card i {
+            /* We can keep them primary blue, or use brand colors. The prompt asks for a "similar but different looking theme". Let's use brand colors for socials to differentiate them from the pure blue contact icons. */
+        }
+        .fa-instagram { color: #E1306C !important; }
+        .fa-goodreads { color: #553B08 !important; } /* Standard goodreads brown */
+        .letterboxd-icon { 
+            /* Custom styling for letterboxd SVG to match size */
+            width: 32px; 
+            height: 32px; 
+            margin-bottom: 1rem;
+            fill: #00E054; /* Letterboxd Green */
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0 0 0.75rem 0;
+            color: #222;
+        }
+        
+        .card a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 0.95rem;
+            word-break: break-all;
+        }
+        .card a:hover {
+            text-decoration: underline;
+        }
+        
+        .card p {
+            color: #666;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Other sections from original HTML */
+        .cv-box, .message-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #eaeaea;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 1rem;
+        }
+        .btn-primary:hover {
+            background-color: #1557b0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-top: 1px solid #eaeaea;
+            color: #666;
+            margin-top: 3rem;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Arsh Dhawan</a>
             <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="education.html" class="nav-link">Education</a>
-                </li>
-                <li class="nav-item">
-                    <a href="experience.html" class="nav-link">Experience</a>
-                </li>
-                <li class="nav-item">
-                    <a href="fun.html" class="nav-link">Fun Stuff</a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact.html" class="nav-link">Contact</a>
-                </li>
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Education</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Experience</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Fun Stuff</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" style="color: var(--primary-blue);">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="page-header header-contact">
+    <section class="page-header">
         <h1>Get in Touch</h1>
     </section>
 
     <section class="content-section">
         <div class="container">
+            
             <div class="contact-info-section">
                 <h2>Contact Information</h2>
-                <div class="contact-grid">
-                    <div class="contact-item">
+                <div class="card-grid">
+                    <div class="card">
                         <i class="fas fa-envelope"></i>
                         <h3>Email</h3>
                         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arsh23@iiserb.ac.in">arsh23@iiserb.ac.in</a>
                     </div>
-                    <div class="contact-item">
+                    <div class="card">
                         <i class="fab fa-linkedin"></i>
                         <h3>LinkedIn</h3>
                         <a href="https://www.linkedin.com/in/arsh-dhawan/" target="_blank" rel="noopener noreferrer">
                             linkedin.com/in/arsh-dhawan
                         </a>
                     </div>
-                    <div class="contact-item">
+                    <div class="card">
                         <i class="fas fa-map-marker-alt"></i>
                         <h3>Location</h3>
                         <p>IISER Bhopal, India</p>
@@ -60,43 +256,85 @@
                 </div>
             </div>
 
+            <div class="socials-section">
+                <h2>Socials</h2>
+                <div class="card-grid">
+                    <!-- Instagram Card -->
+                    <div class="card social-card">
+                        <i class="fab fa-instagram"></i>
+                        <h3>Instagram</h3>
+                        <a href="https://www.instagram.com/arsh007feynman/" target="_blank" rel="noopener noreferrer">
+                            @arsh007feynman
+                        </a>
+                    </div>
+                    
+                    <!-- Goodreads Card -->
+                    <div class="card social-card">
+                        <i class="fab fa-goodreads"></i>
+                        <h3>Goodreads</h3>
+                        <a href="https://www.goodreads.com/arsh_dhawan" target="_blank" rel="noopener noreferrer">
+                            arsh_dhawan
+                        </a>
+                    </div>
+
+                    <!-- Letterboxd Card (Using custom SVG since FontAwesome doesn't have it standardly available in basic free tier) -->
+                    <div class="card social-card">
+                        <svg class="letterboxd-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.28 17.524c-1.396 0-2.528-1.13-2.528-2.524s1.132-2.525 2.528-2.525 2.525 1.13 2.525 2.525-1.13 2.524-2.525 2.524m7.44 0c-1.395 0-2.524-1.13-2.524-2.524s1.13-2.525 2.524-2.525 2.525 1.13 2.525 2.525-1.13 2.524-2.525 2.524M12 24C5.373 24 0 18.627 0 12S5.373 0 12 0s12 5.373 12 12-5.373 12-12 12m-3.72-10.452c2.094 0 3.792 1.698 3.792 3.792s-1.698 3.792-3.792 3.792-3.793-1.698-3.793-3.792 1.699-3.792 3.793-3.792m7.44 0c2.094 0 3.79 1.698 3.79 3.792s-1.696 3.792-3.79 3.792-3.792-1.698-3.792-3.792 1.698-3.792 3.792-3.792"/>
+                        </svg>
+                        <h3>Letterboxd</h3>
+                        <a href="https://letterboxd.com/azaadArsh/" target="_blank" rel="noopener noreferrer">
+                            azaadArsh
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <div class="cv-section">
                 <h2>Curriculum Vitae</h2>
                 <div class="cv-box">
-                    <p>My detailed CV is available for download. It contains my complete academic achievements, research experience, skills, and professional background.</p>
-                    <a href="pdfs/arsh_cv_wp.pdf" class="btn btn-primary" target="_blank">
-                        <i class="fas fa-download"></i> Download CV (PDF)
+                    <p class="mb-4">My detailed CV is available for download. It contains my complete academic achievements, research experience, skills, and professional background.</p>
+                    <a href="pdfs/arsh_cv_wp.pdf" class="btn-primary" target="_blank">
+                        <i class="fas fa-download mr-2"></i> Download CV (PDF)
                     </a>
                 </div>
             </div>
 
             <div class="message-section">
                 <h2>Send Me a Message</h2>
-                <p>Feel free to reach out to me for collaborations, opportunities, or just to say hello!</p>
-                <form class="contact-form" action="https://formspree.io/f/mpqylqwe" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
+                <div class="cv-box">
+                    <p class="mb-4">Feel free to reach out to me for collaborations, opportunities, or just to say hello!</p>
+                    <form class="contact-form" action="https://formspree.io/f/mpqylqwe" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <footer class="footer">
         <p>&copy; 2026 Arsh Dhawan. All rights reserved.</p>
-        <p class="last-updated">Last updated: <span id="lastUpdated"></span></p>
+        <p class="mt-2 text-sm">Last updated: <span id="lastUpdated">August 2026</span></p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const date = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('lastUpdated').textContent = date.toLocaleDateString('en-US', options);
+        });
+    </script>
 </body>
 </html>
