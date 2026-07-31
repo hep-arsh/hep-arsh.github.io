@@ -4,58 +4,359 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Arsh Dhawan</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Use Tailwind CDN for baseline reset and utility classes if needed, though custom CSS is primarily used here for specific matching -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #1a73e8; /* Matches the blue in the original image */
+            --bg-light: #f8f9fa;     /* Matches the subtle background */
+            --text-main: #333;
+            --text-muted: #666;
+            --border-color: #eaeaea;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Navbar styling mimicking the provided HTML structure's expected look */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem; /* Added horizontal padding */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 1.5rem;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+        
+        .nav-link.active {
+            color: var(--primary-blue);
+        }
+
+        .page-header {
+            /* If you want the purple physics background back, you'd use a background-image here */
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .content-section h2 {
+            color: var(--primary-blue);
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            margin-top: 3rem;
+            text-align: left;
+        }
+        
+        .content-section h2:first-child {
+            margin-top: 0;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Icon styling inside cards */
+        .card i, .card svg {
+            font-size: 2.5rem; /* Larger icons */
+            color: var(--primary-blue);
+            margin-bottom: 1.25rem;
+            display: block;
+        }
+
+        /* Specific styling for social icons */
+        .social-card i {
+            /* Override primary blue for specific social brand colors */
+        }
+        .social-card .fa-instagram { color: #E1306C !important; }
+        .social-card .fa-goodreads { color: #553B08 !important; }
+        
+        .social-card .letterboxd-icon { 
+            width: 40px; /* Match icon size */
+            height: 40px; 
+            margin-bottom: 1.25rem;
+            fill: #00E054; /* Letterboxd Green */
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+            color: var(--text-main);
+        }
+        
+        .card a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 1rem;
+            word-break: break-all;
+        }
+        
+        .card a:hover {
+            text-decoration: underline;
+        }
+        
+        .card p {
+            color: var(--text-muted);
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Other sections */
+        .cv-box, .message-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+        
+        .cv-box p, .message-box p {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        /* Button styling */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 0.875rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-size: 1rem;
+        }
+        
+        .btn-primary:hover {
+            background-color: #1557b0;
+        }
+        
+        .btn-primary i {
+            margin-right: 0.5rem;
+        }
+
+        /* Form styling */
+        .contact-form {
+            max-width: 100%;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box; /* Ensure padding doesn't widen the input */
+            transition: border-color 0.2s;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+        }
+
+        /* Footer styling */
+        .footer {
+            text-align: center;
+            padding: 2.5rem;
+            background-color: white;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            margin-top: 4rem;
+        }
+        
+        .footer p {
+            margin: 0.25rem 0;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* In a real app, you'd add a hamburger menu here */
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Arsh Dhawan</a>
             <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="education.html" class="nav-link">Education</a>
-                </li>
-                <li class="nav-item">
-                    <a href="experience.html" class="nav-link">Experience</a>
-                </li>
-                <li class="nav-item">
-                    <a href="fun.html" class="nav-link">Fun Stuff</a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact.html" class="nav-link">Contact</a>
-                </li>
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Education</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Experience</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Fun Stuff</a></li>
+                <li class="nav-item"><a href="#" class="nav-link active">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="page-header header-contact">
+    <section class="page-header">
         <h1>Get in Touch</h1>
     </section>
 
     <section class="content-section">
         <div class="container">
+            
             <div class="contact-info-section">
                 <h2>Contact Information</h2>
-                <div class="contact-grid">
-                    <div class="contact-item">
+                <div class="card-grid">
+                    <div class="card">
                         <i class="fas fa-envelope"></i>
                         <h3>Email</h3>
                         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arsh23@iiserb.ac.in">arsh23@iiserb.ac.in</a>
                     </div>
-                    <div class="contact-item">
+                    <div class="card">
                         <i class="fab fa-linkedin"></i>
                         <h3>LinkedIn</h3>
                         <a href="https://www.linkedin.com/in/arsh-dhawan/" target="_blank" rel="noopener noreferrer">
                             linkedin.com/in/arsh-dhawan
                         </a>
                     </div>
-                    <div class="contact-item">
+                    <div class="card">
                         <i class="fas fa-map-marker-alt"></i>
                         <h3>Location</h3>
                         <p>IISER Bhopal, India</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="socials-section">
+                <h2>Socials</h2>
+                <div class="card-grid">
+                    <!-- Instagram Card -->
+                    <div class="card social-card">
+                        <i class="fab fa-instagram"></i>
+                        <h3>Instagram</h3>
+                        <a href="https://www.instagram.com/arsh007feynman/" target="_blank" rel="noopener noreferrer">
+                            @arsh007feynman
+                        </a>
+                    </div>
+                    
+                    <!-- Goodreads Card -->
+                    <div class="card social-card">
+                        <!-- Using standard FontAwesome icon, could be an SVG if preferred -->
+                        <i class="fab fa-goodreads"></i>
+                        <h3>Goodreads</h3>
+                        <a href="https://www.goodreads.com/arsh_dhawan" target="_blank" rel="noopener noreferrer">
+                            arsh_dhawan
+                        </a>
+                    </div>
+
+                    <!-- Letterboxd Card -->
+                    <div class="card social-card">
+                        <svg class="letterboxd-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" fill="#00E054" />
+                            <!-- Simplified representation to match image icon closely -->
+                        </svg>
+                        <h3>Letterboxd</h3>
+                        <a href="https://letterboxd.com/azaadArsh/" target="_blank" rel="noopener noreferrer">
+                            azaadArsh
+                        </a>
                     </div>
                 </div>
             </div>
@@ -64,7 +365,7 @@
                 <h2>Curriculum Vitae</h2>
                 <div class="cv-box">
                     <p>My detailed CV is available for download. It contains my complete academic achievements, research experience, skills, and professional background.</p>
-                    <a href="pdfs/arsh_cv_wp.pdf" class="btn btn-primary" target="_blank">
+                    <a href="pdfs/arsh_cv_wp.pdf" class="btn-primary" target="_blank">
                         <i class="fas fa-download"></i> Download CV (PDF)
                     </a>
                 </div>
@@ -72,31 +373,41 @@
 
             <div class="message-section">
                 <h2>Send Me a Message</h2>
-                <p>Feel free to reach out to me for collaborations, opportunities, or just to say hello!</p>
-                <form class="contact-form" action="https://formspree.io/f/mpqylqwe" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
+                <div class="message-box">
+                    <p>Feel free to reach out to me for collaborations, opportunities, or just to say hello!</p>
+                    <form class="contact-form" action="https://formspree.io/f/mpqylqwe" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <footer class="footer">
         <p>&copy; 2026 Arsh Dhawan. All rights reserved.</p>
-        <p class="last-updated">Last updated: <span id="lastUpdated"></span></p>
+        <p class="mt-2 text-sm">Last updated: <span id="lastUpdated"></span></p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const date = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('lastUpdated').textContent = date.toLocaleDateString('en-US', options);
+        });
+    </script>
 </body>
 </html>
