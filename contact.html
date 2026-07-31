@@ -4,19 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Arsh Dhawan</title>
+    <!-- Use Tailwind CDN for baseline reset and utility classes if needed, though custom CSS is primarily used here for specific matching -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --primary-blue: #1a73e8; /* Matches the blue in the image */
-            --bg-light: #f8f9fa;     /* Matches the subtle background in the image */
+            --primary-blue: #1a73e8; /* Matches the blue in the original image */
+            --bg-light: #f8f9fa;     /* Matches the subtle background */
+            --text-main: #333;
+            --text-muted: #666;
+            --border-color: #eaeaea;
         }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-light);
-            color: #333;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
         }
-        
+
         /* Navbar styling mimicking the provided HTML structure's expected look */
         .navbar {
             background-color: white;
@@ -25,20 +34,23 @@
             top: 0;
             z-index: 1000;
         }
+        
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 1rem 2rem; /* Added horizontal padding */
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+        
         .nav-logo {
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--primary-blue);
             text-decoration: none;
         }
+        
         .nav-menu {
             display: flex;
             list-style: none;
@@ -46,13 +58,19 @@
             padding: 0;
             gap: 1.5rem;
         }
+        
         .nav-link {
             text-decoration: none;
             color: #555;
             font-weight: 500;
             transition: color 0.2s;
         }
+        
         .nav-link:hover {
+            color: var(--primary-blue);
+        }
+        
+        .nav-link.active {
             color: var(--primary-blue);
         }
 
@@ -60,37 +78,41 @@
         .page-header {
             background-color: var(--primary-blue);
             color: white;
-            padding: 3rem 1rem;
+            padding: 4rem 1rem; /* Increased vertical padding */
             text-align: center;
         }
+        
         .page-header h1 {
             font-size: 2.5rem;
             margin: 0;
+            font-weight: 500; /* Slightly less bold than default */
         }
 
         /* Main content container */
         .container {
-            max-width: 900px; /* Constraining width to match image proportions better */
+            max-width: 1000px; /* Constraining width to match image proportions */
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 3rem 2rem; /* Generous padding around content */
         }
 
         /* Section headings matching the image */
-        h2 {
+        .content-section h2 {
             color: var(--primary-blue);
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.75rem; /* Larger font size */
+            font-weight: 700;   /* Bold weight */
             margin-bottom: 1.5rem;
-            margin-top: 2.5rem; /* Space between sections */
+            margin-top: 3rem; /* Space between sections */
+            text-align: left; /* Ensure left alignment */
         }
-        h2:first-child {
+        
+        .content-section h2:first-child {
             margin-top: 0;
         }
 
         /* Grid for cards (Contact & Socials) */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Min width for cards */
             gap: 1.5rem;
         }
 
@@ -98,10 +120,10 @@
         .card {
             background: white;
             border-radius: 8px;
-            padding: 2rem 1.5rem;
+            padding: 2.5rem 1.5rem; /* Tall padding */
             text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); /* Subtle shadow from image */
-            border: 1px solid #eaeaea; /* Very subtle border */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border-color);
             transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
             flex-direction: column;
@@ -110,105 +132,156 @@
         }
         
         .card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-4px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
         /* Icon styling inside cards */
         .card i, .card svg {
-            font-size: 2rem;
+            font-size: 2.5rem; /* Larger icons */
             color: var(--primary-blue);
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
             display: block;
         }
 
-        /* Specific styling for social icons to make them distinct but unified */
+        /* Specific styling for social icons */
         .social-card i {
-            /* We can keep them primary blue, or use brand colors. The prompt asks for a "similar but different looking theme". Let's use brand colors for socials to differentiate them from the pure blue contact icons. */
+            /* Override primary blue for specific social brand colors */
         }
-        .fa-instagram { color: #E1306C !important; }
-        .fa-goodreads { color: #553B08 !important; } /* Standard goodreads brown */
-        .letterboxd-icon { 
-            /* Custom styling for letterboxd SVG to match size */
-            width: 32px; 
-            height: 32px; 
-            margin-bottom: 1rem;
+        .social-card .fa-instagram { color: #E1306C !important; }
+        .social-card .fa-goodreads { color: #553B08 !important; }
+        
+        .social-card .letterboxd-icon { 
+            width: 40px; /* Match icon size */
+            height: 40px; 
+            margin-bottom: 1.25rem;
             fill: #00E054; /* Letterboxd Green */
         }
 
         .card h3 {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 600;
-            margin: 0 0 0.75rem 0;
-            color: #222;
+            margin: 0 0 0.5rem 0;
+            color: var(--text-main);
         }
         
         .card a {
             color: var(--primary-blue);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 1rem;
             word-break: break-all;
         }
+        
         .card a:hover {
             text-decoration: underline;
         }
         
         .card p {
-            color: #666;
+            color: var(--text-muted);
             margin: 0;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
-        /* Other sections from original HTML */
-        .cv-box, .message-section {
+        /* Other sections */
+        .cv-box, .message-box {
             background: white;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border: 1px solid #eaeaea;
+            border: 1px solid var(--border-color);
+        }
+        
+        .cv-box p, .message-box p {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            font-size: 1rem;
         }
 
+        /* Button styling */
         .btn-primary {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background-color: var(--primary-blue);
             color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
+            padding: 0.875rem 1.5rem;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 500;
             border: none;
             cursor: pointer;
             transition: background-color 0.2s;
-            margin-top: 1rem;
+            font-size: 1rem;
         }
+        
         .btn-primary:hover {
             background-color: #1557b0;
         }
+        
+        .btn-primary i {
+            margin-right: 0.5rem;
+        }
 
+        /* Form styling */
+        .contact-form {
+            max-width: 100%;
+        }
+        
         .form-group {
             margin-bottom: 1.5rem;
             text-align: left;
         }
+        
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: inherit;
+            color: var(--text-main);
         }
         
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box; /* Ensure padding doesn't widen the input */
+            transition: border-color 0.2s;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+        }
+
+        /* Footer styling */
         .footer {
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem;
             background-color: white;
-            border-top: 1px solid #eaeaea;
-            color: #666;
-            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            margin-top: 4rem;
+        }
+        
+        .footer p {
+            margin: 0.25rem 0;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* In a real app, you'd add a hamburger menu here */
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 2rem 1rem;
+            }
         }
     </style>
 </head>
@@ -221,7 +294,7 @@
                 <li class="nav-item"><a href="#" class="nav-link">Education</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Experience</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Fun Stuff</a></li>
-                <li class="nav-item"><a href="#" class="nav-link" style="color: var(--primary-blue);">Contact</a></li>
+                <li class="nav-item"><a href="#" class="nav-link active">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -270,6 +343,7 @@
                     
                     <!-- Goodreads Card -->
                     <div class="card social-card">
+                        <!-- Using standard FontAwesome icon, could be an SVG if preferred -->
                         <i class="fab fa-goodreads"></i>
                         <h3>Goodreads</h3>
                         <a href="https://www.goodreads.com/arsh_dhawan" target="_blank" rel="noopener noreferrer">
@@ -277,10 +351,11 @@
                         </a>
                     </div>
 
-                    <!-- Letterboxd Card (Using custom SVG since FontAwesome doesn't have it standardly available in basic free tier) -->
+                    <!-- Letterboxd Card -->
                     <div class="card social-card">
                         <svg class="letterboxd-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8.28 17.524c-1.396 0-2.528-1.13-2.528-2.524s1.132-2.525 2.528-2.525 2.525 1.13 2.525 2.525-1.13 2.524-2.525 2.524m7.44 0c-1.395 0-2.524-1.13-2.524-2.524s1.13-2.525 2.524-2.525 2.525 1.13 2.525 2.525-1.13 2.524-2.525 2.524M12 24C5.373 24 0 18.627 0 12S5.373 0 12 0s12 5.373 12 12-5.373 12-12 12m-3.72-10.452c2.094 0 3.792 1.698 3.792 3.792s-1.698 3.792-3.792 3.792-3.793-1.698-3.793-3.792 1.699-3.792 3.793-3.792m7.44 0c2.094 0 3.79 1.698 3.79 3.792s-1.696 3.792-3.79 3.792-3.792-1.698-3.792-3.792 1.698-3.792 3.792-3.792"/>
+                            <circle cx="12" cy="12" r="10" fill="#00E054" />
+                            <!-- Simplified representation to match image icon closely -->
                         </svg>
                         <h3>Letterboxd</h3>
                         <a href="https://letterboxd.com/azaadArsh/" target="_blank" rel="noopener noreferrer">
@@ -293,17 +368,17 @@
             <div class="cv-section">
                 <h2>Curriculum Vitae</h2>
                 <div class="cv-box">
-                    <p class="mb-4">My detailed CV is available for download. It contains my complete academic achievements, research experience, skills, and professional background.</p>
+                    <p>My detailed CV is available for download. It contains my complete academic achievements, research experience, skills, and professional background.</p>
                     <a href="pdfs/arsh_cv_wp.pdf" class="btn-primary" target="_blank">
-                        <i class="fas fa-download mr-2"></i> Download CV (PDF)
+                        <i class="fas fa-download"></i> Download CV (PDF)
                     </a>
                 </div>
             </div>
 
             <div class="message-section">
                 <h2>Send Me a Message</h2>
-                <div class="cv-box">
-                    <p class="mb-4">Feel free to reach out to me for collaborations, opportunities, or just to say hello!</p>
+                <div class="message-box">
+                    <p>Feel free to reach out to me for collaborations, opportunities, or just to say hello!</p>
                     <form class="contact-form" action="https://formspree.io/f/mpqylqwe" method="POST">
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -317,7 +392,9 @@
                             <label for="message">Message</label>
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn-primary">Send Message</button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
                     </form>
                 </div>
             </div>
@@ -326,7 +403,7 @@
 
     <footer class="footer">
         <p>&copy; 2026 Arsh Dhawan. All rights reserved.</p>
-        <p class="mt-2 text-sm">Last updated: <span id="lastUpdated">August 2026</span></p>
+        <p class="mt-2 text-sm">Last updated: <span id="lastUpdated"></span></p>
     </footer>
 
     <script>
